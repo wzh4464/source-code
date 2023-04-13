@@ -1,0 +1,27 @@
+cmake_minimum_required(VERSION 3.0.0)
+project(miniproject VERSION 0.1.0)
+
+add_definitions(-DGL_SILENCE_DEPRECATION)
+include_directories(/usr/local/include)
+include_directories(/opt/homebrew/include)
+
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+set(CMAKE_BUILD_TYPE Debug)
+add_compile_options(-Wall -Wextra -Wpedantic -g)
+set(CMAKE_CXX_FLAGS_DEBUG "-O0")
+
+link_directories(/opt/homebrew/lib)
+
+file(GLOB SOURCES
+    miniproject.cpp
+    gsrc.cpp
+)
+
+add_executable(miniproject ${SOURCES})
+
+target_link_libraries(miniproject
+    "-framework glut"
+    "-framework opengl"
+    "-lglew"
+)

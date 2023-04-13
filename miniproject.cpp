@@ -11,13 +11,15 @@
 #include <stdlib.h>			// file reading
 #include <time.h>			// for annimation
 #include <math.h>			// for cos() and sin()
-#include "glut.h"			// all gl~ commands
-#include <Windows.h>		// for Sleep()
+// #include "glut.h"			// all gl~ commands
+#include <GLUT/glut.h>		// all gl~ commands
+// #include <Windows.h>		// for Sleep()
+#include <unistd.h>
 #include <iostream>			// io
 #include <fstream>			// file reading
 
 #define STB_IMAGE_IMPLEMENTATION
-#include <stb_image.h>		// image reading
+#include "stb_image.h"		// image reading
 using namespace std;
 
 //////////////////////////////////////////////////////////////////
@@ -223,7 +225,7 @@ void theta_increase(void)
 	{
 		t1 = t1 - 350;
 	}
-	Sleep(8);
+	usleep(8);
 	glutPostRedisplay();
 }
 
@@ -321,7 +323,7 @@ void displayobject(void)
 
 
 
-void main(int argc, char** argv)
+int main(int argc, char** argv)
 {
 
 	calculatecircle();   // calculate data for the planar mesh
